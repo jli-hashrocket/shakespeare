@@ -1,11 +1,11 @@
 Shakespear::Application.routes.draw do
 
-  resource :roles, only: :index
+  resource :scenes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'roles#index'
+  root 'scenes#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

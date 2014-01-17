@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'nokogiri'
+require 'open-uri'
+
+@speakers = []
+file = File.open("lib/files/julius_caesar.xml")
+doc = Nokogiri::XML::Document.parse(file)
+file.close
+@speeches = doc.xpath('//SPEECH')
+@speeches.each do |speech|
+  speaker = speech.search('SPEAKER').text
+
+  lines = []
+  speech.search('LINE').each do |l|
+    lines << l.text
+  end
+binding.pry
+
+end
