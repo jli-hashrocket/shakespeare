@@ -6,4 +6,10 @@
     <th># of Scenes</th>
     <th>% of Total Scenes</th>
   </tr>
+  <% @speakers.each do |speaker| %>
+    <tr>
+      <td><%= speaker.name %></td>
+      <td><%= speaker.lines.size %></td>
+    </tr>
+  <% end %>
 </table>

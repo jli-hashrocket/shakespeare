@@ -7,4 +7,6 @@ class Speech < ActiveRecord::Base
     inverse_of: :speech
   belongs_to :scene,
     inverse_of: :speeches
+
+
 end
