@@ -12,8 +12,14 @@ gem 'sass-rails', '~> 4.0.0'
 # Use Foundation
 gem 'foundation-rails'
 
+# Use Table Sorter
+gem 'jquery-tablesorter'
+
 # Use Nokogiri
 gem 'nokogiri'
+
+# Use Kaminari
+gem 'kaminari'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
