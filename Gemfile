@@ -12,6 +12,9 @@ gem 'sass-rails', '~> 4.0.0'
 # Use Foundation
 gem 'foundation-rails'
 
+# Use Table Sorter
+gem 'jquery-tablesorter'
+
 # Use Nokogiri
 gem 'nokogiri'
 
