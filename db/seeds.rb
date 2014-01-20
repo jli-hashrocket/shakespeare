@@ -12,9 +12,9 @@ class XmlFeed
       title = scene.search('TITLE').text
       scene_obj = Scene.find_or_create_by(title: title)
       scene.search('SPEECH').each do |speech|
-        speech_obj = scene_obj.speeches.create
         speaker = speech.search('SPEAKER').text
-        Speaker.find_or_create_by(speech_id: speech_obj.id, name: speaker)
+        speaker_obj = Speaker.find_or_create_by( name: speaker )
+        speech_obj = scene_obj.speeches.create( speaker_id: speaker_obj.id )
         speech.search('LINE').each do |l|
           Line.create(speech_id: speech_obj.id, line: l.text)
         end

@@ -8,16 +8,17 @@ feature 'user sees table of roles', %q{
 } do
 
   scenario 'goes to the index page' do
-    # file = File.open("lib/files/test_julius_caesar.xml")
-    # doc = Nokogiri::XML::Document.parse(file)
-    # file.close
+    file = File.open(Rails.root.join( "spec/test_parse/julius_caesar_test.xml"))
+    doc = Nokogiri::XML::Document.parse(file)
+    file.close
 
-    # feed = XmlFeed.new(doc)
-    # feed.feed_data
+    feed = XmlFeed.new(doc)
+    feed.feed_data
 
     visit root_path
     within("#myTable") do
       page.should have_content("ARTEMIDORUS")
+      page.should have_content("19")
     end
   end
 

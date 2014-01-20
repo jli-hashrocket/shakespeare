@@ -1,12 +1,8 @@
 require 'spec_helper'
 
 describe Speaker do
-  it { should have_valid(:speech_id).when(1) }
-  it { should_not have_valid(:speech_id).when(nil) }
+  it { should validate_presence_of(:name) }
 
-  it { should have_valid(:name).when("ARTEMIDORUS") }
-  it { should_not have_valid(:name).when(nil) }
-
-  it { should belong_to :speech }
-  it { should have_many(:lines).through(:speech) }
+  it { should have_many :speeches }
+  it { should have_many(:lines).through(:speeches) }
 end
