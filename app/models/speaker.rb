@@ -8,4 +8,9 @@ class Speaker < ActiveRecord::Base
   has_many :lines,
     through: :speech
 
+  def self.number_of_lines
+    speakers_lines = {}
+    speakers = self.all
+  end
+
 end

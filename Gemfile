@@ -52,6 +52,7 @@ group :test, :development do
   gem 'shoulda'
   gem 'capybara'
   gem 'hirb'
+  gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password
