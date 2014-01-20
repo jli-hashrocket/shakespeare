@@ -1,11 +1,18 @@
 class Speaker < ActiveRecord::Base
-  validates_presence_of :speech_id
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  belongs_to :speech,
-    inverse_of: :speakers
+  has_many :speeches,
+    inverse_of: :speaker
   has_many :lines,
-    through: :speech
+    through: :speeches
 
+  def self.longest_speech
+  end
+
+  def scene_numbers
+  end
+
+  def total_scenes
+  end
 end

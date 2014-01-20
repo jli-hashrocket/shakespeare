@@ -10,8 +10,8 @@
 </thead>
   <% @speakers.each do |speaker| %>
     <tr>
-      <td><%= speaker.name %></td>
-      <td><%= speaker.lines.size %></td>
+      <td class="speaker"><%= speaker.name %></td>
+      <td class="speakerLines"><%= speaker.lines.size %></td>
     </tr>
   <% end %>
 

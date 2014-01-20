@@ -5,4 +5,6 @@ class Line < ActiveRecord::Base
 
   belongs_to :speech,
     inverse_of: :lines
+  belongs_to :speaker,
+    inverse_of: :lines
 end
