@@ -12,6 +12,11 @@
     <tr>
       <td class="speaker"><%= speaker.name %></td>
       <td class="speakerLines"><%= speaker.lines.size %></td>
+      <% @longest_speeches.each do |speech| %>
+         <% if speech.key(speech[speaker[:name]]) == speaker.name %>
+          <td><%= speech[speaker[:name]] %></td>
+          <% end %>
+      <% end %>
     </tr>
   <% end %>
 
