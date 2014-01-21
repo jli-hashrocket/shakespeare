@@ -1,6 +1,6 @@
 class SpeakersController < ApplicationController
   def index
-    @speakers = Speaker.order("name").page(params[:page])
-    @longest_speech = Speaker.longest_speech
+    @speakers = Speaker.page(params[:page])
+    @longest_speeches = Speaker.longest_speech
   end
 end
