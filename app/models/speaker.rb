@@ -37,6 +37,7 @@ class Speaker < ActiveRecord::Base
   end
 
   def scene_numbers
+
   end
 
   def total_scenes
