@@ -17,8 +17,9 @@ feature 'user sees table of roles', %q{
 
     visit root_path
     within("#myTable") do
-      page.should have_content("ARTEMIDORUS")
-      page.should have_content("19")
+      page.should have_content("FLAVIUS")
+      page.should have_content("26")
+      page.should have_content("10")
     end
   end
 
