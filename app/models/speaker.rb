@@ -7,6 +7,7 @@ class Speaker < ActiveRecord::Base
   has_many :lines,
     through: :speeches
 
+  # Creates an array of hashes of all speakers with the longest speech
   def self.longest_speech
     speech_lines = speeches_with_line_size
     speakers = Speaker.all
@@ -23,6 +24,7 @@ class Speaker < ActiveRecord::Base
     speakers_lines = speakers_lines.group_by(&:keys).map{|k, v| {k.first => (v.flat_map(&:values)).max}}
   end
 
+  # Creates an array of hashes of all speeches with speech_id,speaker_id,line_size attributes
   def self.speeches_with_line_size
     speeches = Speech.all
     speech_lines= []
