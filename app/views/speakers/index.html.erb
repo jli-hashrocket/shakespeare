@@ -17,6 +17,12 @@
           <td><%= speech[speaker[:name]] %></td>
           <% end %>
       <% end %>
+      <% @scene_nums.each do |scene_num| %>
+         <% if scene_num.key(scene_num[speaker[:name]]) == speaker.name %>
+          <td><%= scene_num[speaker.name] %></td>
+          <% end %>
+      <% end %>
+
     </tr>
   <% end %>
 

@@ -40,7 +40,20 @@ class Speaker < ActiveRecord::Base
     speech_lines
   end
 
+  def self.scene_numbers
+    speakers = Speaker.all
+    speaker_scenes =  []
+    speakers.each do |speaker|
+      speaker_hash = {}
+      scene = Scene.first
+      scene_count = speaker.scenes.count
+      speaker_hash[speaker.name] = scene_count
+      speaker_scenes << speaker_hash
+    end
+    speaker_scenes
+  end
 
   def total_scenes
+
   end
 end
