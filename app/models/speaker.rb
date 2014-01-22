@@ -52,7 +52,12 @@ class Speaker < ActiveRecord::Base
     speaker_scenes
   end
 
-  def total_scenes
-
+  def self.total_scenes
+    speaker_scenes_num = scene_numbers
+    scenes = Scene.all.count
+    speaker_scenes.each do |speaker_scene|
+      speaker_scene
+    end
   end
+
 end
