@@ -45,7 +45,6 @@ class Speaker < ActiveRecord::Base
     speaker_scenes =  []
     speakers.each do |speaker|
       speaker_hash = {}
-      scene = Scene.first
       scene_count = speaker.scenes.count
       speaker_hash[speaker.name] = scene_count
       speaker_scenes << speaker_hash
