@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120201608) do
+ActiveRecord::Schema.define(version: 20140122224717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,19 +35,14 @@ ActiveRecord::Schema.define(version: 20140120201608) do
     t.datetime "updated_at"
   end
 
-  create_table "speech_elements", force: true do |t|
-    t.integer  "speech_id",  null: false
-    t.integer  "speaker_id", null: false
-    t.integer  "line_id",    null: false
+  create_table "speeches", force: true do |t|
+    t.integer  "scene_id",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "speaker_id",              null: false
+    t.integer  "lines_count", default: 0
   end
 
-  create_table "speeches", force: true do |t|
-    t.integer  "scene_id",   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "speaker_id", null: false
-  end
+  add_index "speeches", ["lines_count"], name: "index_speeches_on_lines_count", using: :btree
 
 end

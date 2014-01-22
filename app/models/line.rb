@@ -4,7 +4,8 @@ class Line < ActiveRecord::Base
   validates_uniqueness_of :line
 
   belongs_to :speech,
-    inverse_of: :lines
+    inverse_of: :lines,
+    counter_cache: true
   belongs_to :speaker,
     inverse_of: :lines
 end
