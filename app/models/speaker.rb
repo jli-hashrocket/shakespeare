@@ -7,42 +7,11 @@ class Speaker < ActiveRecord::Base
   has_many :lines,
     through: :speeches
   has_many :scenes,
-    through: :speeches,
-    uniq: true
-
-  # Creates an array of hashes of all speakers with the longest speech
-  def self.longest_speech
-    speech_lines = speeches_with_line_size
-    speakers = Speaker.all
-    speakers_lines = []
-    speakers.each do |speaker|
-      speech_lines.each do |speech_line|
-        speaker_hash = {}
-        if speaker.id == speech_line[:speaker_id]
-          speaker_hash[speaker.name] = speech_line[:lines_size]
-          speakers_lines << speaker_hash
-        end
-      end
-    end
-    speakers_lines = speakers_lines.group_by(&:keys).map{|k, v| {k.first => (v.flat_map(&:values)).max}}
-  end
+    -> { uniq },
+    through: :speeches
 
   def longest_speech
-
-  end
-
-  # Creates an array of hashes of all speeches with speech_id,speaker_id,line_size attributes
-  def self.speeches_with_line_size
-    speeches = Speech.all
-    speech_lines= []
-    speeches.each do |speech|
-      speech_lines_hash = {}
-      speech_lines_hash[:speech_id] = speech.id
-      speech_lines_hash[:speaker_id] = speech.speaker_id
-      speech_lines_hash[:lines_size] = speech.lines.size
-      speech_lines << speech_lines_hash
-    end
-    speech_lines
+    speeches.order(lines_count: :desc).first
   end
 
   def self.scene_numbers
