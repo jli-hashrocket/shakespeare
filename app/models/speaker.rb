@@ -6,6 +6,8 @@ class Speaker < ActiveRecord::Base
     inverse_of: :speaker
   has_many :lines,
     through: :speeches
+  has_many :scenes,
+    through: :speeches
 
   # Creates an array of hashes of all speakers with the longest speech
   def self.longest_speech
@@ -38,10 +40,20 @@ class Speaker < ActiveRecord::Base
     speech_lines
   end
 
-  def scene_numbers
-
+  def self.scene_numbers
+    speakers = Speaker.all
+    speaker_scenes =  []
+    speakers.each do |speaker|
+      speaker_hash = {}
+      scene = Scene.first
+      scene_count = speaker.scenes.count
+      speaker_hash[speaker.name] = scene_count
+      speaker_scenes << speaker_hash
+    end
+    speaker_scenes
   end
 
   def total_scenes
+
   end
 end
