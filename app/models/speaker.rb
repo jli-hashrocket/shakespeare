@@ -7,7 +7,8 @@ class Speaker < ActiveRecord::Base
   has_many :lines,
     through: :speeches
   has_many :scenes,
-    through: :speeches
+    through: :speeches,
+    uniq: true
 
   # Creates an array of hashes of all speakers with the longest speech
   def self.longest_speech
@@ -24,6 +25,10 @@ class Speaker < ActiveRecord::Base
       end
     end
     speakers_lines = speakers_lines.group_by(&:keys).map{|k, v| {k.first => (v.flat_map(&:values)).max}}
+  end
+
+  def longest_speech
+
   end
 
   # Creates an array of hashes of all speeches with speech_id,speaker_id,line_size attributes
@@ -52,12 +57,11 @@ class Speaker < ActiveRecord::Base
     speaker_scenes
   end
 
-  def self.total_scenes
-    speaker_scenes_num = scene_numbers
-    scenes = Scene.all.count
-    speaker_scenes.each do |speaker_scene|
-      speaker_scene
-    end
+  def scene_percent
+    total_scenes = Scene.all.count
+    scenes_appeared_in = scenes.count
+    percent = scenes_appeared_in.to_f/total_scenes.to_f
+    percent_per_speaker = (percent * 100).round.to_s + '%'
   end
 
 end
