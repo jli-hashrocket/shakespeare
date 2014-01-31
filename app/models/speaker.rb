@@ -14,18 +14,6 @@ class Speaker < ActiveRecord::Base
     speeches.order(lines_count: :desc).first
   end
 
-  def self.scene_numbers
-    speakers = Speaker.all
-    speaker_scenes =  []
-    speakers.each do |speaker|
-      speaker_hash = {}
-      scene_count = speaker.scenes.count
-      speaker_hash[speaker.name] = scene_count
-      speaker_scenes << speaker_hash
-    end
-    speaker_scenes
-  end
-
   def scene_percent
     total_scenes = Scene.all.count
     scenes_appeared_in = scenes.count

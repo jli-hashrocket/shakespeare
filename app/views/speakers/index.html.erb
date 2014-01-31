@@ -13,12 +13,8 @@
       <td class="speaker"><%= speaker.name %></td>
       <td class="speakerLines"><%= speaker.lines.size %></td>
       <td><%= speaker.longest_speech.lines_count %></td>
-      <% @scene_nums.each do |scene_num| %>
-         <% if scene_num.key(scene_num[speaker[:name]]) == speaker.name %>
-          <td><%= scene_num[speaker.name] %></td>
-          <% end %>
-      <% end %>
-         <td><%= speaker.scene_percent%></td>
+      <td><%= speaker.scenes.count %></td>
+      <td><%= speaker.scene_percent%></td>
 
     </tr>
   <% end %>
