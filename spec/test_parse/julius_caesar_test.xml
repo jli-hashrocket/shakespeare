@@ -1,3 +1,5 @@
+<PLAY>
+  <TITLE>The Tragedy of Julius Caesar</TITLE>
     <SCENE>
       <TITLE>SCENE I. Rome. A street.</TITLE>
       <STAGEDIR>Enter FLAVIUS, MARULLUS, and certain Commoners</STAGEDIR>
@@ -146,3 +148,4 @@
       </SPEECH>
       <STAGEDIR>Exeunt</STAGEDIR>
     </SCENE>
+  </PLAY>
